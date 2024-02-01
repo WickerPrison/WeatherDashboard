@@ -49,8 +49,9 @@ h2{
     width: 30%;
 }
 
-#sidebar-header{
+#sidebar h1{
     color: black;
+    padding-bottom: 0;
 }
 
 input{
@@ -77,10 +78,11 @@ li{
 li:hover{
     background-color: var(--darkBlue);
     cursor: pointer;
-}
+} 
 
-.results-button{
-    
+.dotted-line{
+    border-top: 0.2em dashed black;
+    margin-bottom: -1em;
 }
 
 #weather-display{
