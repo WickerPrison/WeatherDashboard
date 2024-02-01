@@ -1,0 +1,116 @@
+:root{
+    --darkBlue: #176087;
+    --blue: #1D84B5;
+    --white: #F7ECE1;
+    --magenta: #8E5572;
+    --baseTextSize: 1rem;
+    --size2: calc(var(--baseTextSize) * 1.62);
+    --size3: calc(var(--size2) * 1.62);
+}
+
+html, body{
+    padding:0;
+    margin: 0;
+    background-color: var(--white);
+}
+
+header{
+    background-color: var(--darkBlue);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1{
+    margin: 0;
+    font-size: var(--size3);
+    color: var(--white);
+    text-align: center;
+    padding: 0.5em;
+}
+
+h2{
+    font-size: var(--size2);
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar{
+    width: 35%;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 1%;
+    vertical-align: top;
+}
+
+#sidebar button{
+    font-size: var(--size2);
+    width: 30%;
+}
+
+#sidebar-header{
+    color: black;
+}
+
+input{
+    font-size: var(--size2);
+    width: 65%;
+}
+
+ul{
+    list-style: none;
+    padding: 0 1em;
+}
+
+li{
+    font-size: var(--size2);
+    background-color: var(--magenta);
+    color: var(--white);
+    padding: 0.3em;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 5px 1px black;
+}
+
+li:hover{
+    background-color: var(--darkBlue);
+}
+
+#weather-display{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 63%;
+}
+
+#todays-weather{
+    width: 90%;
+    background-color: var(--darkBlue);
+    color: var(--white);
+    font-size: var(--size2);
+    margin: 1em auto;
+    padding: 0.5em;
+    border-radius: 15px;
+}
+
+#todays-weather h1{
+    padding: 0;
+}
+
+#todays-weather div{
+    margin: 0.2em;
+}
+
+
+.forecast-day{
+    background-color: var(--darkBlue);
+    width: 19%;
+    color: var(--white);
+    border-radius: 12px;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+
+.forecast-day h2{
+    text-align: center;
+}
