@@ -8,37 +8,46 @@
 </head>
 <body>
     <header><h1>Weather Dashboard</h1></header>
-    <section id="sidebar">
-        <h1 id="sidebar-header">Choose a City:</h1>
-        <input type="text" id="search-input">
-        <button id="search">Search</button>
-        <ul id="results">
-
-        </ul>
-        <div class="dotted-line"></div>
-        <h1>Previous Searches:</h1>
-        <ul id="previous-searches">
-
-        </ul>
-    </section>
-
-    <section id="weather-display">
-        <div id="todays-weather">
-            <h1>My, The City - 2/1/24</h1>
-            <div class="temp">Temperature: 75</div>
-            <div class="wind">Wind Speed: 4 mph</div>
-            <div class="humid">Humidity: 200%</div>
-        </div>
-        <div id="forecast">
-
-        </div>
-    </section>
+    <main>
+        <section id="sidebar">
+            <h1 id="sidebar-header">Choose a City:</h1>
+            <input type="text" id="search-input">
+            <button id="search">Search</button>
+            <ul id="results">
+    
+            </ul>
+            <div class="dotted-line"></div>
+            <h1>Previous Searches:</h1>
+            <ul id="previous-searches">
+    
+            </ul>
+        </section>
+    
+        <section id="weather-display">
+            <div id="todays-weather">
+                <h1>My, The City - 2/1/24</h1>
+                <img src="">
+                <div class="temp">Temperature: 75</div>
+                <div class="wind">Wind Speed: 4 mph</div>
+                <div class="humid">Humidity: 200%</div>
+            </div>
+            <div id="forecast">
+    
+            </div>
+        </section>
+    </main>
     <div id="forecast-day-template" class="forecast-day">
-        <h2 class="date">2/1/24</h1>
+        <h2 class="date">date</h1>
+        <img src="">
         <div class="temp">Temperature: 75</div>
         <div class="wind">Wind Speed: 4 mph</div>
         <div class="humid">Humidity: 200%</div>
     </div>
+    <script
+    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"
+  ></script>
     <script src="./Assets/JavaScript/weatherDashboard.js"></script>
 </body>
 </html>

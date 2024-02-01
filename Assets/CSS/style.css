@@ -3,15 +3,23 @@
     --blue: #1D84B5;
     --white: #F7ECE1;
     --magenta: #8E5572;
-    --baseTextSize: 1rem;
+    --baseTextSize: 0.9rem;
     --size2: calc(var(--baseTextSize) * 1.62);
     --size3: calc(var(--size2) * 1.62);
 }
 
 html, body{
-    padding:0;
+    padding: 0;
     margin: 0;
     background-color: var(--white);
+}
+
+main{
+    width: 100%;
+    padding: 0 2%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
 }
 
 header{
@@ -38,7 +46,6 @@ h2{
 #sidebar{
     width: 35%;
     text-align: center;
-    display: inline-block;
     box-sizing: border-box;
     margin-right: 1%;
     vertical-align: top;
@@ -87,8 +94,7 @@ li:hover{
 
 #weather-display{
     box-sizing: border-box;
-    display: inline-block;
-    width: 63%;
+    width: 65%;
 }
 
 #todays-weather{
@@ -101,8 +107,14 @@ li:hover{
     border-radius: 15px;
 }
 
+img{
+    display: block;
+    margin: 0 auto;
+}
+
 #todays-weather h1{
     padding: 0;
+    vertical-align: middle;
 }
 
 #todays-weather div{

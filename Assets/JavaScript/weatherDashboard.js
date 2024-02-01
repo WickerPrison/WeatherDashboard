@@ -24,7 +24,12 @@ function setupPreviousSearches(){
         var resultEntry = document.createElement("li");
         resultEntry.classList.add("result-button");
         resultEntry.data = localStorageObject[i];
-        resultEntry.innerText = localStorageObject[i].name + ", " + localStorageObject[i].state + ", " + localStorageObject[i].country;
+        var nameString = localStorageObject[i].name;
+        if(localStorageObject[i].state != null){
+            nameString += ", " + localStorageObject[i].state;
+        }
+        nameString += ", " + localStorageObject[i].country;
+        resultEntry.innerText = nameString;
         previousSearches.appendChild(resultEntry);
         resultEntry.addEventListener("click", chooseCityEvent);
     }
@@ -42,7 +47,12 @@ function searchCity(){
                 var resultEntry = document.createElement("li");
                 resultEntry.classList.add("result-button");
                 resultEntry.data = data[i];
-                resultEntry.innerText = data[i].name + ", " + data[i].state + ", " + data[i].country;
+                var nameString = data[i].name;
+                if(data[i].state != null){
+                    nameString += ", " + data[i].state;
+                }
+                nameString += ", " + data[i].country;
+                resultEntry.innerText = nameString;
                 results.appendChild(resultEntry);
                 resultEntry.addEventListener("click", chooseCityEvent);
             }
@@ -59,13 +69,19 @@ function chooseCity(inputData){
     setupPreviousSearches();
 
     var cityName = todaysWeather.querySelector("h1");
-    cityName.innerText = inputData.name + ", " + inputData.state;
+    var nameString = inputData.name;
+    if(inputData.state != null){
+        nameString += ", " + inputData.state;
+    }
+    cityName.innerText = nameString + " - " + dayjs().format("MM/DD/YYYY");
 
     fetch("https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" + inputData.lat + "&lon=" + inputData.lon + "&appid=" + key)
     .then(function(response){
         return response.json();
     })
     .then(function(data){
+        console.log(data);
+        todaysWeather.querySelector("img").setAttribute("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
         todaysWeather.querySelector(".temp").innerText = "Temperature: " + data.main.temp + " " + String.fromCharCode(176) + "F";
         todaysWeather.querySelector(".wind").innerText = "Wind Speed: " + data.wind.speed + " MPH";
         todaysWeather.querySelector(".humid").innerText = "Humidity: " + data.main.humidity + "%";
@@ -86,8 +102,11 @@ function fiveDayForecast(inputData){
             var j = i / 8 - 0.5;
             var forecastDay = forecastTemplate.cloneNode(true);
             forecastDay.id = "Day" + j;
-            forecastDay.querySelector(".temp").innerText = "Temperature: " + data.list[i].main.temp + " " + String.fromCharCode(176) + "F";
-            forecastDay.querySelector(".wind").innerText = "Wind Speed: " + data.list[i].wind.speed + " MPH";
+            var date = dayjs().add(j + 1, "day").format("MM/DD");
+            forecastDay.querySelector(".date").innerText = date;
+            forecastDay.querySelector("img").src = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
+            forecastDay.querySelector(".temp").innerText = "Temp: " + data.list[i].main.temp + " " + String.fromCharCode(176) + "F";
+            forecastDay.querySelector(".wind").innerText = "Wind: " + data.list[i].wind.speed + " MPH";
             forecastDay.querySelector(".humid").innerText = "Humidity: " + data.list[i].main.humidity + "%";
             forecast.appendChild(forecastDay);
         }
