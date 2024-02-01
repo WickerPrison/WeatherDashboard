@@ -1,5 +1,6 @@
 var geocodingAPICall = "http://api.openweathermap.org/geo/1.0/direct?q=";
-var geocodingAPICall2 = "&limit=5&appid=d1978293ffe262f8e3bf58182e46f05c";
+var geocodingAPICall2 = "&limit=5&appid=";
+var key = "d1978293ffe262f8e3bf58182e46f05c";
 
 var searchBtn = document.getElementById("search");
 var searchInput = document.getElementById("search-input");
@@ -7,8 +8,7 @@ var results = document.getElementById("results");
 var todaysWeather = document.getElementById("todays-weather");
 
 function searchCity(){
-    var fetchString = geocodingAPICall + searchInput.value + geocodingAPICall2;
-    console.log(fetchString);
+    var fetchString = geocodingAPICall + searchInput.value + geocodingAPICall2 + key;
     fetch(fetchString)
         .then(function (response){
             return response.json();
@@ -27,9 +27,22 @@ function searchCity(){
 }
 
 function chooseCity(event){
-    var data = event.target.data;
+    var inputData = event.target.data;
+    console.log(inputData);
     var cityName = todaysWeather.querySelector("h1");
-    cityName.innerText = data.name + ", " + data.state;
+    cityName.innerText = inputData.name + ", " + inputData.state;
+
+    fetch("https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" + inputData.lat + "&lon=" + inputData.lon + "&appid=" + key)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        todaysWeather.querySelector(".temp").innerText = "Temperature: " + data.main.temp + " " + String.fromCharCode(176) + "F";
+        todaysWeather.querySelector(".wind").innerText = "Wind Speed: " + data.wind.speed + " MPH";
+        todaysWeather.querySelector(".humid").innerText = "Humidity: " + data.main.humidity + "%";
+    });
 }
+
 
 searchBtn.addEventListener("click", searchCity);
