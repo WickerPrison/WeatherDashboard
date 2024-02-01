@@ -71,10 +71,16 @@ li{
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 5px 1px black;
+    margin: 0.5em;
 }
 
 li:hover{
     background-color: var(--darkBlue);
+    cursor: pointer;
+}
+
+.results-button{
+    
 }
 
 #weather-display{
