@@ -109,6 +109,11 @@ li:hover{
     margin: 0.2em;
 }
 
+#forecast{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
 .forecast-day{
     background-color: var(--darkBlue);
@@ -121,4 +126,8 @@ li:hover{
 
 .forecast-day h2{
     text-align: center;
+}
+
+#forecast-day-template{
+    display: none;
 }

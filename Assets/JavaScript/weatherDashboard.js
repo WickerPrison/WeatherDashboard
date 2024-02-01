@@ -7,6 +7,8 @@ var searchInput = document.getElementById("search-input");
 var results = document.getElementById("results");
 var previousSearches = document.getElementById("previous-searches");
 var todaysWeather = document.getElementById("todays-weather");
+var forecast = document.getElementById("forecast");
+var forecastTemplate = document.getElementById("forecast-day-template");
 
 var localStorageObject = JSON.parse(localStorage.getItem("previousSearches"));
 if(localStorageObject == null){
@@ -64,10 +66,31 @@ function chooseCity(inputData){
         return response.json();
     })
     .then(function(data){
-        console.log(data);
         todaysWeather.querySelector(".temp").innerText = "Temperature: " + data.main.temp + " " + String.fromCharCode(176) + "F";
         todaysWeather.querySelector(".wind").innerText = "Wind Speed: " + data.wind.speed + " MPH";
         todaysWeather.querySelector(".humid").innerText = "Humidity: " + data.main.humidity + "%";
+    });
+
+    fiveDayForecast(inputData);
+}
+
+function fiveDayForecast(inputData){
+
+    fetch("https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + inputData.lat + "&lon=" + inputData.lon + "&appid=" + key)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        forecast.innerHTML = "";
+        for(var i = 4; i < 44; i+=8){
+            var j = i / 8 - 0.5;
+            var forecastDay = forecastTemplate.cloneNode(true);
+            forecastDay.id = "Day" + j;
+            forecastDay.querySelector(".temp").innerText = "Temperature: " + data.list[i].main.temp + " " + String.fromCharCode(176) + "F";
+            forecastDay.querySelector(".wind").innerText = "Wind Speed: " + data.list[i].wind.speed + " MPH";
+            forecastDay.querySelector(".humid").innerText = "Humidity: " + data.list[i].main.humidity + "%";
+            forecast.appendChild(forecastDay);
+        }
     });
 }
 
