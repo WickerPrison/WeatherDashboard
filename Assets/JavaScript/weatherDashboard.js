@@ -80,7 +80,6 @@ function chooseCity(inputData){
         return response.json();
     })
     .then(function(data){
-        console.log(data);
         todaysWeather.querySelector("img").setAttribute("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
         todaysWeather.querySelector(".temp").innerText = "Temperature: " + data.main.temp + " " + String.fromCharCode(176) + "F";
         todaysWeather.querySelector(".wind").innerText = "Wind Speed: " + data.wind.speed + " MPH";

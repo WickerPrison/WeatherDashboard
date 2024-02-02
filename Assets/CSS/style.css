@@ -143,3 +143,40 @@ img{
 #forecast-day-template{
     display: none;
 }
+
+@media screen and (max-width: 992px) {
+    main{
+        flex-direction: column-reverse;
+    }
+
+    #sidebar{
+        width: 100%;
+    }
+
+    #weather-display{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    #forecast{
+        flex-direction: column;
+    }
+
+    .forecast-day{
+        width: 80%;
+        position: relative;
+        margin: 0.2em auto;
+    }
+
+    .forecast-day h2{
+        text-align: left;
+    }
+
+    .forecast-day img{
+        position: absolute;
+        right: 0;
+        top: 0.5em;
+        height: 5em;
+    }
+}
