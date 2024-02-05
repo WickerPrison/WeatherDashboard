@@ -1,5 +1,5 @@
 // these strings are used when performing a fetch request to the api
-var geocodingAPICall = "http://api.openweathermap.org/geo/1.0/direct?q=";
+var geocodingAPICall = "https://api.openweathermap.org/geo/1.0/direct?q=";
 var geocodingAPICall2 = "&limit=5&appid=";
 var key = "d1978293ffe262f8e3bf58182e46f05c";
 
