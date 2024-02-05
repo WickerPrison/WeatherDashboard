@@ -9,6 +9,7 @@
 <body>
     <header><h1>Weather Dashboard</h1></header>
     <main>
+        <!-- this section has the search and previous searches stuff -->
         <section id="sidebar">
             <h1 id="sidebar-header">Choose a City:</h1>
             <input type="text" id="search-input">
@@ -24,6 +25,7 @@
         </section>
     
         <section id="weather-display">
+            <!-- this shows the current weather for the selected location -->
             <div id="todays-weather">
                 <h1>My, The City - 2/1/24</h1>
                 <img src="">
@@ -31,11 +33,13 @@
                 <div class="wind">Wind Speed: 4 mph</div>
                 <div class="humid">Humidity: 200%</div>
             </div>
+            <!-- this holds the entries for the five day forecast -->
             <div id="forecast">
     
             </div>
         </section>
     </main>
+    <!-- this template is invisible but it is copied by the js to populate the forecast div-->
     <div id="forecast-day-template" class="forecast-day">
         <h2 class="date">date</h1>
         <img src="">
@@ -43,6 +47,7 @@
         <div class="wind">Wind Speed: 4 mph</div>
         <div class="humid">Humidity: 200%</div>
     </div>
+    <!-- day js is used for converting dates gotten from the weather api -->
     <script
     src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
