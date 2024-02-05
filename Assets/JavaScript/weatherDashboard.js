@@ -16,10 +16,16 @@ if(localStorageObject == null){
 }
 
 setupPreviousSearches();
-chooseCity(localStorageObject[0]);
+if(localStorageObject.length == 0){
+    chooseCity(null);
+}
+else{
+    chooseCity(localStorageObject[0]);
+}
 
 function setupPreviousSearches(){
     previousSearches.innerHTML = "";
+    if(localStorageObject.length == 0) return;
     for(var i = 0; i < localStorageObject.length;i++){
         var resultEntry = document.createElement("li");
         resultEntry.classList.add("result-button");
@@ -64,6 +70,13 @@ function chooseCityEvent(event){
 }
 
 function chooseCity(inputData){
+    if(inputData == null){
+        todaysWeather.style.display = "none";
+        return;
+    }
+    else{
+        todaysWeather.style.display = "block";
+    }
     localStorageObject.unshift(inputData);
     saveToLocalStorage();
     setupPreviousSearches();
